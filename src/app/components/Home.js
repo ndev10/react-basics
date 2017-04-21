@@ -9,7 +9,30 @@ export class Home extends React.Component {
             status : 0,
             homeLink:props.intialLinkValue
         }
-        
+        console.log("Constructer  called");
+    }
+
+    componentWillMount() {
+        console.log("Component will mount");
+    }
+    componentDidMount() {
+        console.log("Componenet did Mount");
+    }
+    componentWillReceiveProps(nextProps) {
+        console.log("Componenet Will Recieve Props " , nextProps);
+    }
+    shouldComponentUpdate(nextProps,nextState) {
+        console.log("Componenet Should upldate",nextProps,nextState);
+        return true
+    }
+    componentWillUpdate(nextProps,nextState) {
+        console.log("Componenet Will upldate",nextProps,nextState);
+    }
+    componentDidUpdate(prevProps,prevState) {
+        console.log("Componenet Did upldate",prevProps,prevState);
+    }
+    componentWillUnmount() {
+        console.log("Component will unmount.")
     }
     onChangeHomeLink() {
         this.props.changeHomeLink(this.state.homeLink);
@@ -29,6 +52,7 @@ export class Home extends React.Component {
        this.setState ({
            age: this.state.age + 3
        });
+     
        console.log("Age is " + this.state.age);
     }
     render() {
