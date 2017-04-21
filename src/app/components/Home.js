@@ -4,22 +4,29 @@ import PropTypes from 'prop-types';
 export class Home extends React.Component {
     constructor (props) {
         super();
-        this.age = props.age;
+        this.state = {
+            age : props.age,
+            status : 0
+        }
+        
     }
 
     makeOlder () {
         // can not assing read only property error
        // this.props.age = this.props.age + 3;
        
-       this.age = this.age + 3; // can not update the this age value in view. check state banch
-       console.log("Age is " + this.age);
+      // this.age = this.age + 3; // can not update the this age value in view. 
+       this.setState ({
+           age: this.state.age + 3
+       });
+       console.log("Age is " + this.state.age);
     }
     render() {
         let content = <p>Var In a new Component!</p>;
         return(
              <div>
                <h3>{this.props.name}</h3>
-               <div> Age is {this.age}</div>
+               <div> Age is {this.state.age}</div>
                <div> User Object : name is {this.props.user.name}</div>
                <div>
                    <h4> Hobbies </h4>
