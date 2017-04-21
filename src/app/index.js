@@ -5,6 +5,19 @@ import {Home} from "./components/Home";
 import {Header} from "./components/Header"
 
 class App extends React.Component {
+    constructor(props) {
+        super();
+        this.state = {
+            homeLink:"Home1"
+        }
+    }
+    changeHomeLink(newName) {
+       this.setState ({
+           homeLink:newName
+       });
+
+        
+    }
     onGreet() {
         console.log("Hello")
     }
@@ -17,12 +30,16 @@ class App extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col-xs-10 col-xs-offset-1">
-                      <Header homeLink="Home"/>
+                      <Header homeLink={this.state.homeLink}/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-xs-10 col-xs-offset-1">
-                        <Home name={"React"} age={26} user={user} greet={this.onGreet}>
+                        <Home name={"React"} 
+                              age={26} 
+                              user={user} 
+                              greet={this.onGreet} 
+                              changeHomeLink={this.changeHomeLink.bind(this)}>
                             <p> This is inner part to be dislay </p>
                         </Home>
                     </div>
