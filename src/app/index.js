@@ -39,7 +39,8 @@ class App extends React.Component {
                               age={26} 
                               user={user} 
                               greet={this.onGreet} 
-                              changeHomeLink={this.changeHomeLink.bind(this)}>
+                              changeHomeLink={this.changeHomeLink.bind(this)} 
+                              intialLinkValue={this.state.homeLink}>
                             <p> This is inner part to be dislay </p>
                         </Home>
                     </div>
