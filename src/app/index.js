@@ -5,7 +5,9 @@ import {Home} from "./components/Home";
 import {Header} from "./components/Header"
 
 class App extends React.Component {
-
+    onGreet() {
+        console.log("Hello")
+    }
     render() {
         let user = {
             name:"John",
@@ -20,7 +22,7 @@ class App extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-xs-10 col-xs-offset-1">
-                        <Home name={"React"} age={26} user={user}>
+                        <Home name={"React"} age={26} user={user} greet={this.onGreet}>
                             <p> This is inner part to be dislay </p>
                         </Home>
                     </div>

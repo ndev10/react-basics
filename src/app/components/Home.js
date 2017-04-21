@@ -2,12 +2,24 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 export class Home extends React.Component {
+    constructor (props) {
+        super();
+        this.age = props.age;
+    }
+
+    makeOlder () {
+        // can not assing read only property error
+       // this.props.age = this.props.age + 3;
+       
+       this.age = this.age + 3; // can not update the this age value in view. check state banch
+       console.log("Age is " + this.age);
+    }
     render() {
         let content = <p>Var In a new Component!</p>;
         return(
              <div>
                <h3>{this.props.name}</h3>
-               <div> Age is {this.props.age}</div>
+               <div> Age is {this.age}</div>
                <div> User Object : name is {this.props.user.name}</div>
                <div>
                    <h4> Hobbies </h4>
@@ -18,6 +30,14 @@ export class Home extends React.Component {
                    <div>
                        {this.props.children}
                     </div>
+                    <button onClick= {this.props.greet} 
+                            className="btn btn-success" > Greet Me !! </button>
+                    <hr/>
+                    {/* two ways of calling functions throug button */ }
+                   {/* <button onClick= {this.makeOlder.bind(this)} 
+                            className="btn btn-success" > Make me Older</button>*/}
+                    <button onClick= {() => this.makeOlder()} 
+                            className="btn btn-success" > Make me Older</button>
                 </div>
                {content}
             </div>
@@ -35,5 +55,6 @@ export class Home extends React.Component {
 Home.propTypes = {
     name: PropTypes.string,
     age:  PropTypes.number,
-    user: PropTypes.object
+    user: PropTypes.object,
+    greet: PropTypes.func
 }
